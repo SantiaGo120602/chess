@@ -19,4 +19,10 @@ public enum File{
     public String getValue() {
         return value;
     }
+
+    public int getIndex() {
+        char character = value.charAt(0);
+        int asciiCode = (int) character;
+        return asciiCode-97;
+    }
 }

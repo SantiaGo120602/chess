@@ -19,4 +19,8 @@ public enum Rank{
     public int getValue() {
         return value;
     }
+
+    public int getIndex() {
+        return value-1;
+    }
 }

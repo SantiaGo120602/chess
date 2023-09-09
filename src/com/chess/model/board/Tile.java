@@ -31,6 +31,15 @@ public class Tile {
         coordinates[1] = row.getValue();
     }
 
+    public Tile(File file, Rank row, AbstractPiece piece) {
+        this.file = file;
+        this.row = row;
+        this.piece = piece;
+        coordinates = new Integer[2];
+        coordinates[0] = file2coord.get(file);
+        coordinates[1] = row.getValue();
+    }
+
     public File getFile() {
         return file;
     }
