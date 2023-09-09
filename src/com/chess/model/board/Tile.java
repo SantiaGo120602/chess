@@ -2,11 +2,14 @@ package com.chess.model.board;
 
 import java.util.HashMap;
 
+import com.chess.model.pieces.AbstractPiece;
+
 public class Tile {
     private static final HashMap<File, Integer> file2coord;
     private final File file;
     private final Rank row;
     private final Integer[] coordinates;
+    private AbstractPiece piece;
 
     static {
         file2coord = new HashMap<>();
@@ -27,5 +30,26 @@ public class Tile {
         coordinates[0] = file2coord.get(file);
         coordinates[1] = row.getValue();
     }
+
+    public File getFile() {
+        return file;
+    }
+
+    public Rank getRow() {
+        return row;
+    }
+
+    public Integer[] getCoordinates() {
+        return coordinates;
+    }
+
+    public AbstractPiece getPiece() {
+        return piece;
+    }
+
+    public void setPiece(AbstractPiece piece) {
+        this.piece = piece;
+    }
+    
     
 }
