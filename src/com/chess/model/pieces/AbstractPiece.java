@@ -1,9 +1,15 @@
 package com.chess.model.pieces;
 
-public abstract class AbstractPiece {
-    protected Team team; 
+import java.util.ArrayList;
 
-    public abstract String getUniqueId();
-    public abstract void Move(String move);
-    public abstract String listMoves();
+import com.chess.model.actions.Move;
+
+public abstract class AbstractPiece {
+    protected Team team;
+    protected ArrayList<Move> moves;
+
+    public Team getTeam() {
+        return team;
+    }
+
 }
