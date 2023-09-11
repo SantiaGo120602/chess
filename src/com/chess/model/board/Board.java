@@ -21,10 +21,6 @@ public class Board {
         return board;
     }
 
-    public void setBoard(AbstractPiece[][] board) {
-        this.board = board;
-    }
-
     public Board(){
         this.board = createStandardBoard();
     }
