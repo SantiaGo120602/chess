@@ -1,3 +1,5 @@
+package com.chess;
+
 import com.chess.model.board.Board;
 
 public class Main{
