@@ -17,6 +17,14 @@ import com.chess.model.pieces.Rook;
 public class Board {
     private AbstractPiece[][] board;
     
+    public AbstractPiece[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(AbstractPiece[][] board) {
+        this.board = board;
+    }
+
     public Board(){
         this.board = createStandardBoard();
     }
@@ -68,9 +76,11 @@ public class Board {
         if (movement.getMoveType() == MoveType.CASTLE){
             if (endFile == 6){
                 board[5][endRank] = board[7][endRank];
+                board[5][endRank].setHasMoved(true);
                 board[7][endRank] = new EmptyPiece();
             } else {
                 board[3][endRank] = board[0][endRank];
+                board[3][endRank].setHasMoved(true);
                 board[0][endRank] = new EmptyPiece();
             }
         } else if (movement.getMoveType() == MoveType.EN_PASSANT){
@@ -79,6 +89,9 @@ public class Board {
         }
 
         board[endFile][endRank] = startPiece;
+        if (!board[endFile][endRank].isHasMoved()){
+            board[endFile][endRank].setHasMoved(true);
+        }
         board[startFile][startRank] = new EmptyPiece();
         return capturedPiece;
     }
