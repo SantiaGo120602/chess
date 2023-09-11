@@ -3,6 +3,7 @@ package com.chess.model.pieces;
 import java.util.ArrayList;
 
 import com.chess.model.actions.Move;
+import com.chess.model.other.Team;
 
 public class Knight extends AbstractPiece{
     public Knight(Team team){

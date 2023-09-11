@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.chess.model.actions.Move;
 import com.chess.model.actions.MoveType;
+import com.chess.model.other.Team;
 
 public class Pawn extends AbstractPiece{
 

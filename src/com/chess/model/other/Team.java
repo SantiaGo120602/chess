@@ -1,4 +1,4 @@
-package com.chess.model.pieces;
+package com.chess.model.other;
 
 public enum Team {
     BLACK,

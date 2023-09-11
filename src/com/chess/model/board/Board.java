@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.chess.model.actions.Move;
 import com.chess.model.actions.MoveType;
+import com.chess.model.other.Team;
 import com.chess.model.pieces.AbstractPiece;
 import com.chess.model.pieces.Bishop;
 import com.chess.model.pieces.EmptyPiece;
@@ -12,7 +13,6 @@ import com.chess.model.pieces.Knight;
 import com.chess.model.pieces.Pawn;
 import com.chess.model.pieces.Queen;
 import com.chess.model.pieces.Rook;
-import com.chess.model.pieces.Team;
 
 public class Board {
     private AbstractPiece[][] board;
@@ -59,8 +59,28 @@ public class Board {
         return standardBoard;
     }
 
-    public void commitMove(Move movement){
+    public AbstractPiece commitMove(Integer startFile, Integer startRank, Move movement){
+        AbstractPiece startPiece = board[startFile][startRank];
+        Integer endFile = startFile + movement.getMove()[0];
+        Integer endRank = startRank + movement.getMove()[1];
+        AbstractPiece capturedPiece = board[endFile][endRank];
 
+        if (movement.getMoveType() == MoveType.CASTLE){
+            if (endFile == 6){
+                board[5][endRank] = board[7][endRank];
+                board[7][endRank] = new EmptyPiece();
+            } else {
+                board[3][endRank] = board[0][endRank];
+                board[0][endRank] = new EmptyPiece();
+            }
+        } else if (movement.getMoveType() == MoveType.EN_PASSANT){
+            capturedPiece = board[endFile][startRank];
+            board[endFile][startRank] = new EmptyPiece();
+        }
+
+        board[endFile][endRank] = startPiece;
+        board[startFile][startRank] = new EmptyPiece();
+        return capturedPiece;
     }
 
     public ArrayList<Move> getValidMoves(Integer startFile, Integer startRank){
