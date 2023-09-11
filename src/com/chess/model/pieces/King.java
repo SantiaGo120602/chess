@@ -18,8 +18,8 @@ public class King extends AbstractPiece{
         moves.add(new Move(new Integer[] {1, -1}));
         moves.add(new Move(new Integer[] {-1, 1}));
         moves.add(new Move(new Integer[] {-1, -1}));
-        moves.add(new Move(new Integer[] {-2, 0}, MoveType.LEFT_CASTLE));
-        moves.add(new Move(new Integer[] {2, 0}, MoveType.RIGHT_CASTLE));
+        moves.add(new Move(new Integer[] {-2, 0}, MoveType.CASTLE));
+        moves.add(new Move(new Integer[] {2, 0}, MoveType.CASTLE));
     }
 
     

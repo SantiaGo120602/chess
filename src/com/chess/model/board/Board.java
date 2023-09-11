@@ -59,7 +59,7 @@ public class Board {
         return standardBoard;
     }
 
-    public void move(Move movement){
+    public void commitMove(Move movement){
 
     }
 
@@ -69,6 +69,7 @@ public class Board {
         ArrayList<Move> validMoves = new ArrayList<>();
         Integer finalStartFile = startFile;
         Integer finalStartRank = startRank;
+        Team finalStartTeam = startPiece.getTeam();
 
         for (Move potentialMove : potentialMoves){
             boolean addPotentialMove = true;
@@ -82,9 +83,9 @@ public class Board {
                     if (endPiece.getTeam() == startPiece.getTeam()){
                         addPotentialMove = false;
                     }
-                }
-
-                else if (moveType == MoveType.CANT_CAPTURE) {
+                } else if ((startPiece instanceof Pawn) && (startPiece.isHasMoved()) && (potentialMove.getMove()[1] == 2)){
+                    addPotentialMove = false;
+                } else if (moveType == MoveType.CANT_CAPTURE) {
                     while (startPiece != endPiece){
                         
                         if (endFile > startFile){
@@ -132,8 +133,46 @@ public class Board {
                         startPiece = board[startFile][startRank];
                         
                         if (startPiece.getTeam() != Team.NONE){
+                            if (startPiece == endPiece){
+                                if (startPiece.getTeam() != finalStartTeam){
+                                    break;
+                                }
+                            }
                             addPotentialMove = false;
                             break;
+                        }
+                    }
+                } else if (moveType == MoveType.MUST_CAPTURE){
+                    if (endPiece.getTeam() == finalStartTeam || endPiece.getTeam() == Team.NONE){
+                        addPotentialMove = false;
+                    }
+                } else if (moveType == MoveType.EN_PASSANT){
+                    AbstractPiece flagPiece = board[startFile+potentialMove.getMove()[0]][startRank];
+                    if ((endPiece.getTeam() != Team.NONE) || (flagPiece.getTeam() == finalStartTeam || flagPiece.getTeam() == Team.NONE) || !(flagPiece instanceof Pawn)){
+                            addPotentialMove = false;
+                    }
+                } else if (moveType == MoveType.CASTLE){
+                    if (!startPiece.isHasMoved()){
+                        if (potentialMove.getMove()[0] > 0){
+                            for (int i = startFile+1; i < 7; i++){
+                                if (board[i][startRank].getTeam() != Team.NONE){
+                                    addPotentialMove = false;
+                                    break;
+                                } 
+                            }
+                            if (board[7][startRank].isHasMoved()){
+                                addPotentialMove = false;
+                            }
+                        } else {
+                            for (int i = startFile-1; i > 0; i--){
+                                if (board[i][startRank].getTeam() != Team.NONE){
+                                    addPotentialMove = false;
+                                    break;
+                                } 
+                            }
+                            if (board[0][startRank].isHasMoved()){
+                                addPotentialMove = false;
+                            }
                         }
                     }
                 }
@@ -144,7 +183,6 @@ public class Board {
 
                 if (addPotentialMove){
                     validMoves.add(potentialMove);
-                    
                 }
             }
         }

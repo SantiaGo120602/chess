@@ -5,6 +5,5 @@ public enum MoveType {
     CANT_CAPTURE,
     MUST_CAPTURE,
     EN_PASSANT,
-    LEFT_CASTLE,
-    RIGHT_CASTLE;
+    CASTLE;
 }
