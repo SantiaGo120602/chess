@@ -30,7 +30,7 @@ public abstract class AbstractPiece {
     public abstract String getPieceName();
 
     public String getPath(){
-        if (path == null){
+        if (path == null && team != Team.NONE){
             path = "/" + team.name().toLowerCase() + "/" + getPieceName();
         }
         return path;

@@ -6,8 +6,8 @@ import com.chess.model.utils.ImageUtils;
 
 public class MainFrame extends JFrame{
     private static String imagesPath = ImageUtils.getImageFolder("resources/images");
-    private JPanel chessPanel;
-    private JPanel optionsPanel;
+    private ChessPanel chessPanel;
+    private OptionsPanel optionsPanel;
 
     public MainFrame(){
         setTitle("Chess Game");

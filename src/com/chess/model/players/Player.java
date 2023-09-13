@@ -1,7 +1,6 @@
 package com.chess.model.players;
 
 import java.util.ArrayList;
-
 import com.chess.model.other.Team;
 import com.chess.model.pieces.AbstractPiece;
 
@@ -9,13 +8,12 @@ public class Player {
     private PlayerType playerType;
     private PlayerTimer playerTimer;
     private Team team;
-    private ArrayList<AbstractPiece> capturedPieces;
+    private ArrayList<AbstractPiece> capturedPieces = new ArrayList<>();
 
-    public Player(PlayerType playerType, PlayerTimer playerTimer, Team team, ArrayList<AbstractPiece> capturedPieces) {
+    public Player(PlayerType playerType, PlayerTimer playerTimer, Team team) {
         this.playerType = playerType;
         this.playerTimer = playerTimer;
         this.team = team;
-        this.capturedPieces = capturedPieces;
     }
     
     public PlayerType getPlayerType() {
@@ -39,8 +37,8 @@ public class Player {
     public ArrayList<AbstractPiece> getCapturedPieces() {
         return capturedPieces;
     }
-    public void setCapturedPieces(ArrayList<AbstractPiece> capturedPieces) {
-        this.capturedPieces = capturedPieces;
+    public void addCapturedPiece(AbstractPiece capturedPiece) {
+        this.capturedPieces.add(capturedPiece);
     }
 
     
