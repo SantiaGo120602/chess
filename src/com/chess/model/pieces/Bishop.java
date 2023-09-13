@@ -17,4 +17,9 @@ public class Bishop extends AbstractPiece{
         }
     }
 
+    @Override
+    public String getPieceName(){
+        return "bishop";
+    }
+
 }

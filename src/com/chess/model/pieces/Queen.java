@@ -21,4 +21,8 @@ public class Queen extends AbstractPiece{
         }
     }
 
+    @Override
+    public String getPieceName(){
+        return "queen";
+    }
 }

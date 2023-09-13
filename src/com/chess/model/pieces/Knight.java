@@ -19,4 +19,8 @@ public class Knight extends AbstractPiece{
         moves.add(new Move(new Integer[] {-2, -1}));
     }
 
+    @Override
+    public String getPieceName(){
+        return "knight";
+    }
 }

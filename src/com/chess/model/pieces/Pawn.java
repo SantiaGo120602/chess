@@ -27,5 +27,9 @@ public class Pawn extends AbstractPiece{
             moves.add(new Move(new Integer[] {-1, -1}, MoveType.EN_PASSANT));
         }
     }
-    
+
+    @Override
+    public String getPieceName(){
+        return "pawn";
+    }
 }

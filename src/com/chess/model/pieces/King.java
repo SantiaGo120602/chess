@@ -23,6 +23,9 @@ public class King extends AbstractPiece{
         moves.add(new Move(new Integer[] {2, 0}, MoveType.CASTLE));
     }
 
-    
+    @Override
+    public String getPieceName(){
+        return "king";
+    }
 
 }

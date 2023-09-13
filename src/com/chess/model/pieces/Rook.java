@@ -18,4 +18,8 @@ public class Rook extends AbstractPiece{
         }
     }
 
+    @Override
+    public String getPieceName(){
+        return "rook";
+    }
 }
