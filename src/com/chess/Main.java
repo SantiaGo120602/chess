@@ -1,16 +1,15 @@
 package com.chess;
 
-import java.util.ArrayList;
 
-import com.chess.model.actions.Move;
 import com.chess.model.board.Board;
+import com.chess.model.pieces.AbstractPiece;
+import com.chess.model.utils.ImageUtils;
 
 public class Main{
+    private static String imagesPath = ImageUtils.getImageFolder("resources/images");
     public static void main(String[] args) {
         Board board = new Board();
-        ArrayList<Move> pieceList = board.getValidMoves(2, 1);
-        for (Move move : pieceList){
-            System.out.println(move.getMove()[1]);
-        }
+        AbstractPiece abstractPiece = board.getBoard()[0][6];
+        System.out.println(imagesPath + abstractPiece.getPath());
     }
 }
