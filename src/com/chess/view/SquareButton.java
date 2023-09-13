@@ -30,11 +30,9 @@ public class SquareButton extends JButton {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        // Set the background color
         g.setColor(backgroundColor);
         g.fillRect(0, 0, getWidth(), getHeight());
 
-        // Draw the overlay image on top
         if (overlayImage != null) {
             int x = (getWidth() - overlayImage.getWidth()) / 2;
             int y = (getHeight() - overlayImage.getHeight()) / 2;
