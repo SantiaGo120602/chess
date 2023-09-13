@@ -12,5 +12,12 @@ public class MainFrame extends JFrame{
     public MainFrame(){
         setTitle("Chess Game");
         setLayout(new BorderLayout());
+
+        chessPanel = new ChessPanel(8, imagesPath);
+        add(chessPanel, BorderLayout.WEST);
+
+        optionsPanel = new OptionsPanel();
+        add(optionsPanel, BorderLayout.EAST);
+
     }
 }

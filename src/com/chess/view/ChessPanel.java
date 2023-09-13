@@ -8,7 +8,7 @@ public class ChessPanel extends JPanel{
 
     private SquareButton[][] squareButtons;
 
-    public ChessPanel(int BOARD_SIZE) {
+    public ChessPanel(int BOARD_SIZE, String imagesfoled) {
         setLayout(new GridLayout(BOARD_SIZE, BOARD_SIZE));
         squareButtons = new SquareButton[BOARD_SIZE][BOARD_SIZE];
 
