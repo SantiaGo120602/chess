@@ -1,13 +1,24 @@
 package com.chess;
 
 
-import com.chess.model.board.Board;
-import com.chess.model.pieces.AbstractPiece;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
+import com.chess.view.MainFrame;
 
 public class Main{
     public static void main(String[] args) {
-        Board board = new Board();
-        AbstractPiece abstractPiece = board.getBoard()[0][6];
-        System.out.println(abstractPiece.getPath());
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                MainFrame frame = new MainFrame();
+
+                frame.setSize(800, 600);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
+
+                frame.setVisible(true);
+            }
+        });
     }
 }

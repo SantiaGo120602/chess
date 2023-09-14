@@ -31,7 +31,7 @@ public abstract class AbstractPiece {
 
     public String getPath(){
         if (path == null && team != Team.NONE){
-            path = "/" + team.name().toLowerCase() + "/" + getPieceName();
+            path = "/" + team.name().toLowerCase() + "/" + getPieceName() + ".png";
         }
         return path;
     }
