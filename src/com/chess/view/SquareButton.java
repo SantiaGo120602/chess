@@ -14,16 +14,29 @@ public class SquareButton extends JButton {
     private Color backgroundColor = null;
     private BufferedImage overlayImage = null;
 
-    public SquareButton(Color backgroundColor, String imagePath) {
+    public SquareButton(Color backgroundColor, String imagePath, Boolean target) {
         this.backgroundColor = backgroundColor;
         try {
             this.overlayImage = ImageIO.read(new File(imagePath));
             this.overlayImage = resizeImage(overlayImage, 80, 170);
-            
-            
-        } catch (IOException e) {
+
+
+            if (target){
+                this.overlayImage = combineImages(overlayImage,
+                ImageIO.read(new File("/home/santiago/Documents/personal_projects/java/chess/src/resources/images/icons/icons8-target-100.png")));
+            }
+
+        } catch (IOException e1) {
+            try {
+                if (target){
+                    this.overlayImage = ImageIO.read(new File("/home/santiago/Documents/personal_projects/java/chess/src/resources/images/icons/icons8-target-100.png"));
+                }
+            } catch (IOException e2) {
+
+            }
 
         }
+
         setOpaque(true);
     }
 
@@ -51,5 +64,22 @@ public class SquareButton extends JButton {
         g2d.dispose();
 
         return resizedImage;
+    }
+
+    public static BufferedImage combineImages(BufferedImage image1, BufferedImage image2) {
+        int maxWidth = Math.max(image1.getWidth(), image2.getWidth());
+        int totalHeight = Math.max(image1.getHeight(), image2.getHeight());
+
+        BufferedImage combinedImage = new BufferedImage(maxWidth, totalHeight, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = combinedImage.createGraphics();
+
+        g2d.drawImage(image1, 0, 0, null);
+
+        g2d.drawImage(image2, 0, 0, null);
+
+        g2d.dispose();
+
+        return combinedImage;
     }
 }

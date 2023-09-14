@@ -37,7 +37,7 @@ public class ChessPanel extends JPanel{
                 AbstractPiece abstractPiece = abstractPieces[rank][file];
                 String imagePath = imagesFolder + abstractPiece.getPath();
                 Color background = backgroundPiecesMap.get((file+rank)%2);
-                squareButtons[file][rank] = new SquareButton(background, imagePath);
+                squareButtons[file][rank] = new SquareButton(background, imagePath, abstractPiece.getTarget());
                 add(squareButtons[file][rank]);
             }
         }

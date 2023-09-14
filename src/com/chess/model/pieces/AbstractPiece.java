@@ -10,6 +10,15 @@ public abstract class AbstractPiece {
     protected ArrayList<Move> moves = null;
     protected boolean hasMoved = false;
     protected String path = null;
+    protected Boolean target = false;
+
+    public Boolean getTarget() {
+        return target;
+    }
+
+    public void setTarget(Boolean target) {
+        this.target = target;
+    }
 
     public ArrayList<Move> getMoves() {
         return moves;

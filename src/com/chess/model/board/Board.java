@@ -215,7 +215,6 @@ public class Board {
                 }
             }
         }
-        
         return validMoves;
     }
 

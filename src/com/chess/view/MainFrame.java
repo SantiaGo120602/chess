@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import com.chess.model.board.Board;
+import com.chess.model.pieces.AbstractPiece;
 import com.chess.model.utils.ImageUtils;
 
 public class MainFrame extends JFrame{
@@ -16,8 +17,12 @@ public class MainFrame extends JFrame{
     public MainFrame(){
         setTitle("Chess Game");
         mainPanel = new JPanel(new GridBagLayout());
-
-        chessPanel = new ChessPanel(imagesPath, 8, new Board().getBoard());
+        AbstractPiece[][] board = new Board().getBoard();
+        board[2][0].setTarget(true);
+        board[2][1].setTarget(true);
+        board[2][2].setTarget(true);
+        board[2][6].setTarget(true);
+        chessPanel = new ChessPanel(imagesPath, 8, board);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
