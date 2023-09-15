@@ -32,20 +32,14 @@ public class SquareButton extends JButton {
         try {
             this.overlayImage = ImageIO.read(new File(imagePath));
             this.overlayImage = ImageUtils.resizeImage(overlayImage, 80, 170);
-
-
             if (target){
                 this.overlayImage = ImageUtils.combineImages(overlayImage, targetImage);
             }
-
         } catch (IOException e1) {
-
             if (target){
                 this.overlayImage = targetImage;
             }
         }
-
-        setOpaque(true);
     }
 
     @Override
