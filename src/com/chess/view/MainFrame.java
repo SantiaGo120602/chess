@@ -18,8 +18,8 @@ public class MainFrame extends JFrame{
         setTitle("Chess Game");
         mainPanel = new JPanel(new GridBagLayout());
         AbstractPiece[][] board = new Board().getBoard();
-        board[2][0].setTarget(true);
-        board[2][1].setTarget(true);
+        board[1][0].setTarget(true);
+        board[1][1].setTarget(true);
         board[2][2].setTarget(true);
         board[2][6].setTarget(true);
         chessPanel = new ChessPanel(imagesPath, 8, board);
