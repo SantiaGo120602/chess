@@ -42,6 +42,21 @@ public class SquareButton extends JButton {
         }
     }
 
+    public void updateButton(Color backgroundColor, String imagePath, Boolean target) {
+        this.backgroundColor = backgroundColor;
+        try {
+            this.overlayImage = ImageIO.read(new File(imagePath));
+            this.overlayImage = ImageUtils.resizeImage(overlayImage, 80, 170);
+            if (target){
+                this.overlayImage = ImageUtils.combineImages(overlayImage, targetImage);
+            }
+        } catch (IOException e1) {
+            if (target){
+                this.overlayImage = targetImage;
+            }
+        }
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
