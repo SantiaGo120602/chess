@@ -12,7 +12,6 @@ public class ChessPanel extends JPanel{
     private final String imagesFolder;
     private final int BOARD_SIZE;
     private SquareButton[][] squareButtons;
-    private AbstractPiece[][] abstractPieces; 
 
     static {
         backgroundPiecesMap = new HashMap<>();
@@ -22,7 +21,7 @@ public class ChessPanel extends JPanel{
 
 
     public ChessPanel(String imagesFolder, Board board) {
-        abstractPieces = board.getBoard();
+        AbstractPiece[][] abstractPieces = board.getBoard();
         this.imagesFolder = imagesFolder;
         this.BOARD_SIZE = abstractPieces.length;
         setLayout(new GridLayout(BOARD_SIZE, BOARD_SIZE));
@@ -44,7 +43,8 @@ public class ChessPanel extends JPanel{
         }
     }
 
-    public void updateSquareButtons(AbstractPiece[][] abstractPieces){
+    public void updateSquareButtons(Board board){
+        AbstractPiece[][] abstractPieces = board.getBoard();
         for (int file = 0; file < BOARD_SIZE; file++) {
             for (int rank = 0; rank < BOARD_SIZE; rank++) {
                 AbstractPiece abstractPiece = abstractPieces[rank][file];
