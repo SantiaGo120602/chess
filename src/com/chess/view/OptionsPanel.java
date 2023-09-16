@@ -4,26 +4,26 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OptionsPanel extends JPanel {
-    private JLabel player1TimerLabel;
-    private JLabel player2TimerLabel;
+    private JLabel whitePlaterTimerLabel;
+    private JLabel blackPlayerTimerLabel;
     private JTextArea moveHistoryTextArea;
-    private JPanel player1CapturePanel;
-    private JPanel player2CapturePanel;
+    private JPanel whitePlaterCapturePanel;
+    private JPanel blackPlayerCapturePanel;
 
-    public JLabel getPlayer1TimerLabel() {
-        return player1TimerLabel;
+    public JLabel getwhitePlaterTimerLabel() {
+        return whitePlaterTimerLabel;
     }
 
-    public void setPlayer1TimerLabel(JLabel player1TimerLabel) {
-        this.player1TimerLabel = player1TimerLabel;
+    public void setwhitePlaterTimerLabel(JLabel whitePlaterTimerLabel) {
+        this.whitePlaterTimerLabel = whitePlaterTimerLabel;
     }
 
-    public JLabel getPlayer2TimerLabel() {
-        return player2TimerLabel;
+    public JLabel getblackPlayerTimerLabel() {
+        return blackPlayerTimerLabel;
     }
 
-    public void setPlayer2TimerLabel(JLabel player2TimerLabel) {
-        this.player2TimerLabel = player2TimerLabel;
+    public void setblackPlayerTimerLabel(JLabel blackPlayerTimerLabel) {
+        this.blackPlayerTimerLabel = blackPlayerTimerLabel;
     }
 
     public JTextArea getMoveHistoryTextArea() {
@@ -34,42 +34,44 @@ public class OptionsPanel extends JPanel {
         this.moveHistoryTextArea = moveHistoryTextArea;
     }
 
-    public JPanel getPlayer1CapturePanel() {
-        return player1CapturePanel;
+    public JPanel getwhitePlaterCapturePanel() {
+        return whitePlaterCapturePanel;
     }
 
-    public void setPlayer1CapturePanel(JPanel player1CapturePanel) {
-        this.player1CapturePanel = player1CapturePanel;
+    public void setwhitePlaterCapturePanel(JPanel whitePlaterCapturePanel) {
+        this.whitePlaterCapturePanel = whitePlaterCapturePanel;
     }
 
-    public JPanel getPlayer2CapturePanel() {
-        return player2CapturePanel;
+    public JPanel getblackPlayerCapturePanel() {
+        return blackPlayerCapturePanel;
     }
 
-    public void setPlayer2CapturePanel(JPanel player2CapturePanel) {
-        this.player2CapturePanel = player2CapturePanel;
+    public void setblackPlayerCapturePanel(JPanel blackPlayerCapturePanel) {
+        this.blackPlayerCapturePanel = blackPlayerCapturePanel;
     }
 
     public OptionsPanel() {
         setLayout(new BorderLayout());
 
-        Font timerFont = new Font("Arial", Font.BOLD, 24);
-        player1TimerLabel = new JLabel("Player 1 Timer: 00:00");
-        player2TimerLabel = new JLabel("Player 2 Timer: 00:00");
-        player1TimerLabel.setFont(timerFont);
-        player2TimerLabel.setFont(timerFont);
+        Font timerFont = new Font("Arial", Font.BOLD, 34);
+        whitePlaterTimerLabel = new JLabel("   " + "00:00");
+        blackPlayerTimerLabel = new JLabel("        " + "00:00");
+        whitePlaterTimerLabel.setFont(timerFont);
+        blackPlayerTimerLabel.setFont(timerFont);
 
-        JPanel timerPanel = new JPanel(new GridLayout(2, 1));
-        timerPanel.add(player1TimerLabel);
-        timerPanel.add(player2TimerLabel);
+        JPanel timerPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+        timerPanel.add(whitePlaterTimerLabel);
+        timerPanel.add(blackPlayerTimerLabel);
+        timerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         add(timerPanel, BorderLayout.NORTH);
 
-        player1CapturePanel = new JPanel();
-        player2CapturePanel = new JPanel();
-        player1CapturePanel.setPreferredSize(new Dimension(100, 100));
-        player2CapturePanel.setPreferredSize(new Dimension(100, 100));
-        player1CapturePanel.setBorder(BorderFactory.createTitledBorder("Player 1 Captures"));
-        player2CapturePanel.setBorder(BorderFactory.createTitledBorder("Player 2 Captures"));
+        whitePlaterCapturePanel = new JPanel();
+        blackPlayerCapturePanel = new JPanel();
+        whitePlaterCapturePanel.setPreferredSize(new Dimension(100, 100));
+        blackPlayerCapturePanel.setPreferredSize(new Dimension(100, 100));
+        whitePlaterCapturePanel.setBorder(BorderFactory.createTitledBorder("white"));
+        blackPlayerCapturePanel.setBorder(BorderFactory.createTitledBorder("black"));
 
         moveHistoryTextArea = new JTextArea();
         moveHistoryTextArea.setEditable(false);
@@ -77,7 +79,7 @@ public class OptionsPanel extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         JPanel historyPanel = new JPanel(new BorderLayout());
-        historyPanel.setPreferredSize(new Dimension(200, 200));
+        historyPanel.setPreferredSize(new Dimension(120, 120));
         historyPanel.add(scrollPane, BorderLayout.CENTER);
 
         JPanel captureAndHistoryPanel = new JPanel(new GridBagLayout());
@@ -87,17 +89,47 @@ public class OptionsPanel extends JPanel {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        captureAndHistoryPanel.add(player1CapturePanel, gbc);
+        captureAndHistoryPanel.add(whitePlaterCapturePanel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 0;
-        captureAndHistoryPanel.add(player2CapturePanel, gbc);
+        captureAndHistoryPanel.add(blackPlayerCapturePanel, gbc);
 
         gbc.gridx = 2;
         gbc.gridy = 0;
         captureAndHistoryPanel.add(historyPanel, gbc);
 
         add(captureAndHistoryPanel, BorderLayout.CENTER);
+
+        JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        southPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        JButton pauseButton = new JButton("Pause");
+        pauseButton.setPreferredSize(new Dimension(90, 30));
+        southPanel.add(pauseButton);
+
+        JButton loadReplayButton = new JButton("Load Replay");
+        loadReplayButton.setPreferredSize(new Dimension(130, 30));
+        southPanel.add(loadReplayButton);
+
+        String[] options_playerWhite = {"Human", "Patrick"};
+        JComboBox<String> playerWhite = new JComboBox<>(options_playerWhite);
+        playerWhite.setPreferredSize(new Dimension(90, 30));
+        southPanel.add(playerWhite);
+        
+        String[] options_playerBlack = {"Human", "Patrick"};
+        JComboBox<String> playerBlack = new JComboBox<>(options_playerBlack);
+        playerBlack.setPreferredSize(new Dimension(90, 30));
+        southPanel.add(playerBlack);
+
+        JButton leftArrowButton = new JButton("<");
+        JButton rightArrowButton = new JButton(">");
+        leftArrowButton.setPreferredSize(new Dimension(50, 30));
+        rightArrowButton.setPreferredSize(new Dimension(50, 30));
+        southPanel.add(leftArrowButton);
+        southPanel.add(rightArrowButton);
+
+        add(southPanel, BorderLayout.SOUTH);
     }
 
 }

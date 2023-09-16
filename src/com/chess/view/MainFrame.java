@@ -30,7 +30,7 @@ public class MainFrame extends JFrame{
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0.8;
+        gbc.weightx = 0.9;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         mainPanel.add(chessPanel, gbc);
@@ -39,7 +39,7 @@ public class MainFrame extends JFrame{
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 0;
-        gbc.weightx = 0.2;
+        gbc.weightx = 0.1;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         mainPanel.add(optionsPanel, gbc);
