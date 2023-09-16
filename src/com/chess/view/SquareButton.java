@@ -31,7 +31,7 @@ public class SquareButton extends JButton {
         this.backgroundColor = backgroundColor;
         try {
             this.overlayImage = ImageIO.read(new File(imagePath));
-            this.overlayImage = ImageUtils.resizeImage(overlayImage, 80, 170);
+            this.overlayImage = ImageUtils.resizeImage(overlayImage, 80, 140);
             if (target){
                 this.overlayImage = ImageUtils.combineImages(overlayImage, targetImage);
             }
@@ -46,7 +46,7 @@ public class SquareButton extends JButton {
         this.backgroundColor = backgroundColor;
         try {
             this.overlayImage = ImageIO.read(new File(imagePath));
-            this.overlayImage = ImageUtils.resizeImage(overlayImage, 80, 170);
+            this.overlayImage = ImageUtils.resizeImage(overlayImage, 80, 140);
             if (target){
                 this.overlayImage = ImageUtils.combineImages(overlayImage, targetImage);
             }

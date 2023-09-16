@@ -18,6 +18,10 @@ public class Main{
                 frame.setLocationRelativeTo(null);
 
                 frame.setVisible(true);
+
+                frame.getOptionsPanel().getMoveHistoryTextArea().append("adsfasdf");
+
+                frame.getOptionsPanel().getMoveHistoryTextArea().append("holi");
             }
         });
     }
