@@ -5,10 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import com.chess.model.board.Board;
-import com.chess.model.utils.ImageUtils;
 
 public class MainFrame extends JFrame{
-    private static String imagesPath = ImageUtils.getImageFolder("src/resources/images");
     private ChessPanel chessPanel;
     private OptionsPanel optionsPanel;
     private JPanel mainPanel;
@@ -21,10 +19,9 @@ public class MainFrame extends JFrame{
         return optionsPanel;
     }
 
-    public MainFrame(){
+    public MainFrame(Board board, String imagesPath){
         setTitle("Chess Game");
         mainPanel = new JPanel(new GridBagLayout());
-        Board board = new Board();
         
         chessPanel = new ChessPanel(imagesPath, board);
         GridBagConstraints gbc = new GridBagConstraints();
